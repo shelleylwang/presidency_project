@@ -13,7 +13,10 @@ Our initial dataset comprised over 100 distinct texts, each associated with a na
 The first step in our data preparation involved tokenizing the textual content. We employed Python and the Natural Language Toolkit (nltk) for this purpose, segmenting the texts into individual tokens. This tokenization process resulted in a single list object, with each token as an element. The tokenized data was then fed into our analytical pipeline, where it was vectorized to facilitate modeling. 
 
 ## Modeling
-We instatiate a Multinomial Naive Bayes model. This model uses Bayes probability to statistically test the hypothesis that a text of a document belongs to a certain class (in this case, a political party). We also instatiate a Tf-Idf Vectorizer. This type of vectorizer is very powerful for content-based classification because adds importance weight to certain tokens using a tf-idf score. The higher the tf-idf score, the more important that word is in that document compared to how important it is in all the documents. 
+We instatiate a Multinomial Naive Bayes model. This model uses Bayes probability to statistically test the hypothesis that a text of a document belongs to a certain class (in this case, a political party). We also instatiate a Tf-Idf Vectorizer. This type of vectorizer is very powerful for content-based classification because adds importance weight to certain tokens using a tf-idf score. The higher the tf-idf score, the more important that word is in that document compared to how important it is in all the documents. In the below images, we graphed the top unigrams and bigrams for each political party: i.e., the higher up on the graph, the more important that word was in predicting whether a speech belonged to either a Republican or a Democrat.
+
+![Republicans Top Tokens](images/rep_top_tokens.png)
+![Democrats Top Tokens](images/dem_top_tokens.png)
 
 We also instatiated a Guassian Bayes model, which is specific to binary classification tasks.
 
@@ -21,13 +24,16 @@ Finally, for text data, the document term matrix returned by a vectorizer is typ
 
 After grid searching all three models using different hyperparameters, we compared all their accuracy scores to select the best performing model.
 
-
 ## Results
 Our best model is a Multinomial Naive Bayes model. On our training dataset, when our model classified whether a speech was made by a Democrat or a Republican it was right 98% of the time. On unseen testing data, its classification was right 87% of the time.
 
 The model is overfit, which means it could use further tuning to reduce this disparity. One such possible method is Principal Component Analysis. PCA reduces the number of features (and thus the complexity of the model) by creating components consisting of similar features, ones that move in a similar direction. Our group did not have the time for this method, but we consider it in our next steps.
 
 Overall, we’re still getting highly accurate party predictions based just on what a candidate said.
+
+A crucial application of the accuracy of this model is the ability to track changes in political rhetoric **over time**. If our model becomes more predictive (more accurate) in a certain year, that means rhetoric became more polarized during that year. We visualized this below:
+
+![Rhetoric Changes Over Time](images/rhetoric_change.png)
 
 ## Next Steps
 So what about going forward?
