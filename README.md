@@ -18,7 +18,7 @@ We instatiate a Multinomial Naive Bayes model. This model uses Bayes probability
 ![Republicans Top Tokens](images/rep_top_tokens.png)
 ![Democrats Top Tokens](images/dem_top_tokens.png)
 
-We also instatiated a Guassian Bayes model, which is specific to binary classification tasks.
+We also instatiated a Guassian Naive Bayes model for thoroughness. However, GNB assumes that the features (words) follow a Gaussian (normal) distribution within each class. In text classification, the features are typically discrete word frequencies or tf-idf values, which do not follow a Gaussian distribution. In addition, GNB is better suited for continuous features, while MNB is specifically designed for discrete features like word counts. Thus, the GNB did not perform as well as the MNB.
 
 Finally, for text data, the document term matrix returned by a vectorizer is typically a sparse matrix, since there are many tokens that each document does not have (i.e. there are lots of 0 values). This means our model has a very high number of features/columns/words. Tree-based models work very well with high dimensional data, so we instatiated Random Forest model.
 
